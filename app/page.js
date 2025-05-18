@@ -219,7 +219,6 @@ export default function Home() {
                 <div>
                   <div className="text-xs text-gray-500">Responses</div>
                   <div className="font-bold text-gray-800">1,234</div>
-                </div>
             </div>
           </div>
             </div>
@@ -243,44 +242,44 @@ export default function Home() {
       <section id="features" className="py-28 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-2xl mx-auto mb-16 animate-on-scroll">
-              <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-full mb-6 shadow-sm">
-                Features
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Everything you need to create <span className="text-indigo-600">amazing forms</span>
-              </h2>
-              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-                Design beautiful forms, collect responses, and analyze results with our comprehensive toolkit designed for creators like you.
-              </p>
+            <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-full mb-6 shadow-sm">
+              Features
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Everything you need to create <span className="text-indigo-600">amazing forms</span>
+            </h2>
+            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+              Design beautiful forms, collect responses, and analyze results with our comprehensive toolkit designed for creators like you.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll">
-                {[
-                  {
-                    icon: "solar:pen-new-square-bold-duotone",
-                    color: "indigo",
-                    title: "Drag & Drop Builder",
-                    description: "Easily create forms with our intuitive drag-and-drop interface. No coding required."
-                  },
-                  {
-                    icon: "solar:widget-add-bold-duotone",
-                    color: "purple",
-                    title: "40+ Form Elements",
-                    description: "Choose from a wide variety of elements to build exactly what you need, from simple text inputs to complex file uploads."
-                  },
-                  {
-                    icon: "solar:chart-bold-duotone",
-                    color: "blue",
-                    title: "Real-time Analytics",
-                    description: "Get instant insights with beautiful visualizations of your form data and response patterns."
-                  }
-                ].map((feature, index) => (
+            {[
+              {
+                icon: "solar:pen-new-square-bold-duotone",
+                color: "indigo",
+                title: "Drag & Drop Builder",
+                description: "Easily create forms with our intuitive drag-and-drop interface. No coding required."
+              },
+              {
+                icon: "solar:widget-add-bold-duotone",
+                color: "purple",
+                title: "40+ Form Elements",
+                description: "Choose from a wide variety of elements to build exactly what you need, from simple text inputs to complex file uploads."
+              },
+              {
+                icon: "solar:chart-bold-duotone",
+                color: "blue",
+                title: "Real-time Analytics",
+                description: "Get instant insights with beautiful visualizations of your form data and response patterns."
+              }
+            ].map((feature, index) => (
               <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-md p-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
                 <div className={`w-14 h-14 bg-${feature.color}-100 rounded-xl flex items-center justify-center mb-4`}>
                   <Icon icon={feature.icon} className={`text-${feature.color}-600`} width={32} />
-                    </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                    </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -432,7 +431,7 @@ export default function Home() {
                 <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100">
                   <Icon icon="solar:star-bold-duotone" className="text-blue-500" width={28} />
                 </span>
-                  </div>
+              </div>
               <h4 className="font-bold text-xl mb-1">Basic</h4>
               <div className="text-3xl font-bold mb-2">Free</div>
               <ul className="text-sm text-gray-600 mb-7 list-disc list-inside space-y-1 text-center">
@@ -441,7 +440,7 @@ export default function Home() {
                 <li>Email support</li>
               </ul>
               <Button size="md" color="primary" className="w-full">Current Plan</Button>
-                  </div>
+            </div>
             {/* Pro Plan */}
             <div className="border-2 border-amber-400 rounded-2xl p-7 bg-white flex flex-col items-center shadow-xl hover:shadow-2xl transition-shadow scale-105 relative">
               {/* Pro Badge */}
@@ -450,7 +449,7 @@ export default function Home() {
                 <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-100">
                   <Icon icon="solar:crown-bold-duotone" className="text-amber-500" width={28} />
                 </span>
-                        </div>
+              </div>
               <h4 className="font-bold text-xl mb-1 text-amber-600">Pro</h4>
               <div className="text-3xl font-bold mb-2 text-amber-600">$12<span className="text-base font-normal">/mo</span></div>
               <ul className="text-sm text-gray-600 mb-7 list-disc list-inside space-y-1 text-center">
@@ -458,16 +457,16 @@ export default function Home() {
                 <li>Advanced analytics</li>
                 <li>Remove branding</li>
                 <li>Priority support</li>
-                  </ul>
+              </ul>
               <Button size="md" className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-orange-500 hover:to-amber-500 transition-colors font-semibold shadow-md">Upgrade</Button>
-                </div>
+            </div>
             {/* Business Plan */}
             <div className="border rounded-2xl p-7 bg-white flex flex-col items-center shadow-sm hover:shadow-lg transition-shadow relative">
               <div className="mb-3">
                 <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-100">
                   <Icon icon="solar:course-up-bold-duotone" className="text-purple-500" width={28} />
-                      </span>
-                    </div>
+                </span>
+              </div>
               <h4 className="font-bold text-xl mb-1">Business</h4>
               <div className="text-3xl font-bold mb-2">Custom</div>
               <ul className="text-sm text-gray-600 mb-7 list-disc list-inside space-y-1 text-center">
