@@ -265,7 +265,7 @@ const TemplatesContent = () => {
                 <Icon icon="solar:magnifer-linear" className="text-gray-400" width={28} />
               </div>
               <h3 className="text-lg font-medium mb-2">No templates found</h3>
-              <p className="text-gray-500 mb-4">Try adjusting your search or filters to find what you're looking for.</p>
+              <p className="text-gray-500 mb-4">Try adjusting your search or filters to find what you&apos;re looking for.</p>
               <Button 
                 variant="flat" 
                 color="primary" 
@@ -403,7 +403,7 @@ const TemplatesContent = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div className="mb-4 md:mb-0">
-                <h3 className="text-xl font-bold mb-2">Don't see what you need?</h3>
+                <h3 className="text-xl font-bold mb-2">Don&apos;t see what you need?</h3>
                 <p className="text-white/80 mb-0">Create a custom template that perfectly fits your requirements.</p>
               </div>
               <Button 

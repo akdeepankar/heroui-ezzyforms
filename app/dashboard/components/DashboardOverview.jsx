@@ -247,6 +247,9 @@ const DashboardOverview = ({ setActiveTab, setShowPricing }) => {
                 <div 
                   className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 cursor-pointer hover:shadow-md transition-shadow"
                   onClick={() => router.push('/dashboard/create')}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { router.push('/dashboard/create'); } }}
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white mb-3">
                     <Icon icon="solar:pen-new-square-bold" width={24} />
@@ -258,6 +261,9 @@ const DashboardOverview = ({ setActiveTab, setShowPricing }) => {
                 <div 
                   className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200 cursor-pointer hover:shadow-md transition-shadow flex flex-col items-center text-center"
                   onClick={() => setActiveTab("templates")}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { setActiveTab("templates"); } }}
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white mb-3">
                     <Icon icon="solar:clipboard-heart-bold-duotone" width={24} />
@@ -269,6 +275,9 @@ const DashboardOverview = ({ setActiveTab, setShowPricing }) => {
                 <div 
                   className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-xl border border-emerald-200 cursor-pointer hover:shadow-md transition-shadow flex flex-col items-center text-center"
                   onClick={() => setActiveTab("analytics")}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { setActiveTab("analytics"); } }}
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center text-white mb-3">
                     <Icon icon="solar:chart-bold-duotone" width={24} />

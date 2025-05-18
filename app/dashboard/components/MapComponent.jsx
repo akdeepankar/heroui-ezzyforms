@@ -136,7 +136,7 @@ const MapComponent = () => {
       <div id="map-container" className="w-full h-full rounded-br-xl"></div>
       
       {/* Add custom CSS for the pulsing effect */}
-      <style jsx global>{`
+      <style>{`
         .pulse-marker {
           width: 10px;
           height: 10px;
@@ -174,7 +174,7 @@ const MapComponent = () => {
       </div>
       
       {/* Add CSS for city labels */}
-      <style jsx global>{`
+      <style>{`
         .city-label-text {
           background: rgba(255,255,255,0.85);
           color: #334155;

@@ -519,7 +519,13 @@ const FormsContent = ({ activeFormTab: initialActiveFormTab = "all" }) => {
                               <Icon icon={form.icon} className={`text-${form.color}-500`} width={20} />
                             </div>
                             <div>
-                              <p className="font-medium text-gray-900 hover:underline cursor-pointer" onClick={() => setSelectedFormForResponses(form)}>{form.name}</p>
+                              <button
+                                type="button"
+                                className="font-medium text-gray-900 hover:underline cursor-pointer bg-transparent border-0 p-0 m-0 focus:outline-none"
+                                onClick={() => setSelectedFormForResponses(form)}
+                              >
+                                {form.name}
+                              </button>
                               <p className="text-xs text-gray-500">Created on {new Date(form.createdAt).toLocaleDateString()}</p>
                             </div>
                           </div>
