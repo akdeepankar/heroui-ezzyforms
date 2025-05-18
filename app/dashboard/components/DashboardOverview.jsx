@@ -191,7 +191,7 @@ const DashboardOverview = ({ setActiveTab, setShowPricing }) => {
             <div className="flex flex-col md:flex-row items-center justify-between p-8 relative z-1">
               <div className="mb-6 md:mb-0 md:max-w-xl">
                 <h2 className="text-3xl font-bold text-white mb-3">
-                  Welcome to your EzzyForms Dashboard!
+                  Welcome to EzzyForms!
                 </h2>
                 <p className="text-white/90 mb-6 text-lg">
                   Create beautiful, responsive forms that engage your audience
