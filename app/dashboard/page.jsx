@@ -1,11 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
-import { Card, CardBody, Avatar, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, Chip } from "@heroui/react";
+import { useState } from "react";
+import {
+  Card,
+  Avatar,
+  Button,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input,
+  Chip,
+} from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Edu_QLD_Beginner } from 'next/font/google';
+import { Edu_QLD_Beginner } from "next/font/google";
 
 // Import components
 import FormsContent from "./components/FormsContent";
@@ -16,14 +26,13 @@ import DashboardOverview from "./components/DashboardOverview";
 import AIAssistantContent from "./components/AIAssistantContent";
 
 const eduQLD = Edu_QLD_Beginner({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export default function Dashboard() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [activeFormTab, setActiveFormTab] = useState("all");
   const [showPricing, setShowPricing] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
@@ -36,7 +45,7 @@ export default function Dashboard() {
   const renderContent = () => {
     switch (activeTab) {
       case "forms":
-        return <FormsContent activeFormTab={activeFormTab} />;
+        return <FormsContent />;
       case "templates":
         return <TemplatesContent />;
       case "analytics":
@@ -46,7 +55,12 @@ export default function Dashboard() {
       case "ai-assistant":
         return <AIAssistantContent />;
       default:
-        return <DashboardOverview setActiveTab={setActiveTab} setShowPricing={setShowPricing} />;
+        return (
+          <DashboardOverview
+            setActiveTab={setActiveTab}
+            setShowPricing={setShowPricing}
+          />
+        );
     }
   };
 
@@ -57,91 +71,99 @@ export default function Dashboard() {
         {/* Logo */}
         <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 mb-6">
           <div className="flex items-center">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center text-white font-bold mr-2">E</div>
-            <h1 className={`text-xl font-bold text-gray-900 dark:text-white ${eduQLD.className}`}>EzzyForms</h1>
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center text-white font-bold mr-2">
+              E
+            </div>
+            <h1
+              className={`text-xl font-bold text-gray-900 dark:text-white ${eduQLD.className}`}
+            >
+              EzzyForms
+            </h1>
           </div>
         </div>
-        
+
         {/* Navigation */}
         <nav className="flex-1">
           <ul className="space-y-1">
             <li>
-              <button 
-                onClick={() => setActiveTab("dashboard")}
+              <button
                 className={`flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left ${
-                  activeTab === "dashboard" 
-                    ? "bg-primary-50 text-primary-600 font-medium" 
+                  activeTab === "dashboard"
+                    ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
+                onClick={() => setActiveTab("dashboard")}
               >
                 <Icon icon="solar:home-2-bold" width={20} />
                 <span>Dashboard</span>
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => setActiveTab("forms")}
+              <button
                 className={`flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left ${
-                  activeTab === "forms" 
-                    ? "bg-primary-50 text-primary-600 font-medium" 
+                  activeTab === "forms"
+                    ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
+                onClick={() => setActiveTab("forms")}
               >
                 <Icon icon="solar:document-bold" width={20} />
                 <span>Forms</span>
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => setActiveTab("templates")}
+              <button
                 className={`flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left ${
-                  activeTab === "templates" 
-                    ? "bg-primary-50 text-primary-600 font-medium" 
+                  activeTab === "templates"
+                    ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
+                onClick={() => setActiveTab("templates")}
               >
                 <Icon icon="solar:clipboard-heart-bold" width={20} />
                 <span>Templates</span>
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => setActiveTab("analytics")}
+              <button
                 className={`flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left ${
-                  activeTab === "analytics" 
-                    ? "bg-primary-50 text-primary-600 font-medium" 
+                  activeTab === "analytics"
+                    ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
+                onClick={() => setActiveTab("analytics")}
               >
                 <Icon icon="solar:chart-bold" width={20} />
                 <span>Analytics</span>
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => setActiveTab('ai-assistant')}
+              <button
                 className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left text-indigo-600 hover:bg-indigo-50"
+                onClick={() => setActiveTab("ai-assistant")}
               >
                 <Icon icon="solar:chat-round-dots-bold" width={20} />
                 <span>AI Assistant</span>
               </button>
             </li>
           </ul>
-          
+
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider px-4 mb-2">Quick Actions</h3>
+            <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider px-4 mb-2">
+              Quick Actions
+            </h3>
             <ul className="space-y-1">
               <li>
-                <button 
-                  onClick={() => router.push('/dashboard/create')}
+                <button
                   className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left text-gray-600 hover:bg-gray-100"
+                  onClick={() => router.push("/dashboard/create")}
                 >
                   <Icon icon="solar:pen-new-square-linear" width={20} />
                   <span>Create Form</span>
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left text-gray-600 hover:bg-gray-100"
                   onClick={() => setShowImportModal(true)}
                 >
@@ -150,9 +172,9 @@ export default function Dashboard() {
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => setShowPricing(true)}
+                <button
                   className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left border border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 hover:text-amber-800 transition-colors"
+                  onClick={() => setShowPricing(true)}
                 >
                   <Icon icon="solar:crown-bold-duotone" width={20} />
                   <span>Upgrade Now</span>
@@ -161,36 +183,43 @@ export default function Dashboard() {
             </ul>
           </div>
         </nav>
-        
+
         {/* User section */}
         <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
           <button
-            onClick={() => setActiveTab("settings")}
             className={`flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left mb-2 ${
-              activeTab === "settings" 
-                ? "bg-primary-50 text-primary-600 font-medium" 
+              activeTab === "settings"
+                ? "bg-primary-50 text-primary-600 font-medium"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
+            onClick={() => setActiveTab("settings")}
           >
             <Icon icon="solar:settings-bold" width={20} />
             <span>Settings</span>
           </button>
-          <div className="px-4 py-3 cursor-pointer" onClick={() => setShowUserModal(true)}>
+          <div
+            className="px-4 py-3 cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onClick={() => setShowUserModal(true)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") setShowUserModal(true);
+            }}
+          >
             <div className="flex items-center gap-3">
-              <Avatar 
-                size="sm"
-                src="https://i.pravatar.cc/150?img=3"
-              />
+              <Avatar size="sm" src="https://i.pravatar.cc/150?img=3" />
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium truncate">John Doe</p>
-                <p className="text-xs text-gray-500 truncate">john.doe@example.com</p>
+                <p className="text-xs text-gray-500 truncate">
+                  john.doe@example.com
+                </p>
               </div>
-              <Button 
-                isIconOnly 
-                variant="light" 
-                color="danger" 
-                onClick={handleLogout}
+              <Button
+                isIconOnly
                 className="ml-1"
+                color="danger"
+                variant="light"
+                onClick={handleLogout}
               >
                 <Icon icon="solar:logout-3-bold" width={20} />
               </Button>
@@ -198,23 +227,41 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      
+
       {/* Main content area */}
       <div className="flex-1 p-8">
-        {activeTab === "dashboard" ? <DashboardOverview setActiveTab={setActiveTab} setShowPricing={setShowPricing} /> : renderContent()}
+        {activeTab === "dashboard" ? (
+          <DashboardOverview
+            setActiveTab={setActiveTab}
+            setShowPricing={setShowPricing}
+          />
+        ) : (
+          renderContent()
+        )}
       </div>
 
       {/* Pricing Modal (moved from DashboardOverview) */}
-      <Modal isOpen={showPricing} onOpenChange={setShowPricing} hideCloseButton={false} className="backdrop-blur-sm bg-black/40">
+      <Modal
+        className="backdrop-blur-sm bg-black/40"
+        hideCloseButton={false}
+        isOpen={showPricing}
+        onOpenChange={setShowPricing}
+      >
         <ModalContent className="max-w-4xl w-full rounded-3xl shadow-2xl border bg-gradient-to-br from-white via-gray-50 to-blue-50">
-          <ModalHeader className="border-b text-2xl font-bold py-6 text-center tracking-tight">Pricing Plans</ModalHeader>
+          <ModalHeader className="border-b text-2xl font-bold py-6 text-center tracking-tight">
+            Pricing Plans
+          </ModalHeader>
           <ModalBody className="py-10 px-2 md:px-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Basic Plan */}
               <div className="border rounded-2xl p-7 bg-white flex flex-col items-center shadow-sm hover:shadow-lg transition-shadow relative">
                 <div className="mb-3">
                   <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100">
-                    <Icon icon="solar:star-bold-duotone" className="text-blue-500" width={28} />
+                    <Icon
+                      className="text-blue-500"
+                      icon="solar:star-bold-duotone"
+                      width={28}
+                    />
                   </span>
                 </div>
                 <h4 className="font-bold text-xl mb-1">Basic</h4>
@@ -224,32 +271,51 @@ export default function Dashboard() {
                   <li>Basic analytics</li>
                   <li>Email support</li>
                 </ul>
-                <Button size="md" color="primary" className="w-full">Current Plan</Button>
+                <Button className="w-full" color="primary" size="md">
+                  Current Plan
+                </Button>
               </div>
               {/* Pro Plan */}
               <div className="border-2 border-amber-400 rounded-2xl p-7 bg-white flex flex-col items-center shadow-xl hover:shadow-2xl transition-shadow scale-105 relative">
                 {/* Pro Badge */}
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg z-10">Most Popular</span>
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg z-10">
+                  Most Popular
+                </span>
                 <div className="mb-3 mt-3">
                   <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-100">
-                    <Icon icon="solar:crown-bold-duotone" className="text-amber-500" width={28} />
+                    <Icon
+                      className="text-amber-500"
+                      icon="solar:crown-bold-duotone"
+                      width={28}
+                    />
                   </span>
                 </div>
                 <h4 className="font-bold text-xl mb-1 text-amber-600">Pro</h4>
-                <div className="text-3xl font-bold mb-2 text-amber-600">$12<span className="text-base font-normal">/mo</span></div>
+                <div className="text-3xl font-bold mb-2 text-amber-600">
+                  $12<span className="text-base font-normal">/mo</span>
+                </div>
                 <ul className="text-sm text-gray-600 mb-7 list-disc list-inside space-y-1 text-center">
                   <li>5,000 responses/month</li>
                   <li>Advanced analytics</li>
                   <li>Remove branding</li>
                   <li>Priority support</li>
                 </ul>
-                <Button size="md" className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-orange-500 hover:to-amber-500 transition-colors font-semibold shadow-md">Upgrade</Button>
+                <Button
+                  className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-orange-500 hover:to-amber-500 transition-colors font-semibold shadow-md"
+                  size="md"
+                >
+                  Upgrade
+                </Button>
               </div>
               {/* Business Plan */}
               <div className="border rounded-2xl p-7 bg-white flex flex-col items-center shadow-sm hover:shadow-lg transition-shadow relative">
                 <div className="mb-3">
                   <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-100">
-                    <Icon icon="solar:course-up-bold-duotone" className="text-purple-500" width={28} />
+                    <Icon
+                      className="text-purple-500"
+                      icon="solar:course-up-bold-duotone"
+                      width={28}
+                    />
                   </span>
                 </div>
                 <h4 className="font-bold text-xl mb-1">Business</h4>
@@ -259,42 +325,79 @@ export default function Dashboard() {
                   <li>Custom integrations</li>
                   <li>Dedicated support</li>
                 </ul>
-                <Button size="md" color="primary" className="w-full hover:bg-purple-600 hover:text-white transition-colors font-semibold shadow-md">Contact Sales</Button>
+                <Button
+                  className="w-full hover:bg-purple-600 hover:text-white transition-colors font-semibold shadow-md"
+                  color="primary"
+                  size="md"
+                >
+                  Contact Sales
+                </Button>
               </div>
             </div>
           </ModalBody>
           <ModalFooter className="py-4 px-10">
-            <Button variant="flat" onClick={() => setShowPricing(false)} className="w-full">Close</Button>
+            <Button
+              className="w-full"
+              variant="flat"
+              onClick={() => setShowPricing(false)}
+            >
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
 
-      <Modal isOpen={showImportModal} onOpenChange={setShowImportModal} size="md">
+      <Modal
+        isOpen={showImportModal}
+        size="md"
+        onOpenChange={setShowImportModal}
+      >
         <ModalContent>
           <ModalHeader className="border-b">Import Data</ModalHeader>
           <ModalBody>
-            <Input type="file" label="Upload File" accept=".csv,.xlsx,.json" className="w-full" />
+            <Input
+              accept=".csv,.xlsx,.json"
+              className="w-full"
+              label="Upload File"
+              type="file"
+            />
           </ModalBody>
           <ModalFooter>
-            <Button variant="flat" onClick={() => setShowImportModal(false)}>Close</Button>
+            <Button variant="flat" onClick={() => setShowImportModal(false)}>
+              Close
+            </Button>
             <Button color="primary">Import</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
 
-      <Modal isOpen={showUserModal} onOpenChange={setShowUserModal} size="sm">
+      <Modal isOpen={showUserModal} size="sm" onOpenChange={setShowUserModal}>
         <ModalContent>
           <ModalHeader className="border-b">User Details</ModalHeader>
           <ModalBody>
             <Card className="border-0 shadow-none flex flex-col items-center p-6">
-              <Avatar size="lg" src="https://i.pravatar.cc/150?img=3" className="mb-3" />
+              <Avatar
+                className="mb-3"
+                size="lg"
+                src="https://i.pravatar.cc/150?img=3"
+              />
               <div className="text-lg font-bold mb-1">John Doe</div>
-              <div className="text-sm text-gray-500 mb-3">john.doe@example.com</div>
-              <Chip color="success" variant="flat" className="mb-2">Subscription: Free Plan</Chip>
+              <div className="text-sm text-gray-500 mb-3">
+                john.doe@example.com
+              </div>
+              <Chip className="mb-2" color="success" variant="flat">
+                Subscription: Free Plan
+              </Chip>
             </Card>
           </ModalBody>
           <ModalFooter>
-            <Button variant="flat" onClick={() => setShowUserModal(false)} className="w-full">Close</Button>
+            <Button
+              className="w-full"
+              variant="flat"
+              onClick={() => setShowUserModal(false)}
+            >
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

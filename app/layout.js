@@ -1,12 +1,10 @@
 import "@/styles/globals.css";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
 
 export const metadata = {
   title: {
@@ -38,12 +36,10 @@ export default function RootLayout({ children }) {
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <main className="container mx-auto flex-grow">
-              {children}
-            </main>
+            <main className="container mx-auto flex-grow">{children}</main>
           </div>
         </Providers>
       </body>
     </html>
   );
-} 
+}

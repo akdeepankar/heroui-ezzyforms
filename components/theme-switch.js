@@ -8,10 +8,7 @@ import clsx from "clsx";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
-export const ThemeSwitch = ({
-  className,
-  classNames,
-}) => {
+export const ThemeSwitch = ({ className, classNames }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
 
@@ -72,4 +69,4 @@ export const ThemeSwitch = ({
       </div>
     </Component>
   );
-}; 
+};

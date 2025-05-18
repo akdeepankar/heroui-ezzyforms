@@ -138,4 +138,4 @@ export const Navbar = () => {
       </NavbarMenu>
     </HeroUINavbar>
   );
-}; 
+};

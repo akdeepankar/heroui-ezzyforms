@@ -1,11 +1,4 @@
-import * as React from "react";
-
-export const Logo = ({
-  size = 36,
-  width,
-  height,
-  ...props
-}) => (
+export const Logo = ({ size = 36, width, height, ...props }) => (
   <svg
     fill="none"
     height={size || height}
@@ -22,12 +15,7 @@ export const Logo = ({
   </svg>
 );
 
-export const DiscordIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => {
+export const DiscordIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       height={size || height}
@@ -43,12 +31,7 @@ export const DiscordIcon = ({
   );
 };
 
-export const TwitterIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => {
+export const TwitterIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       height={size || height}
@@ -64,12 +47,7 @@ export const TwitterIcon = ({
   );
 };
 
-export const GithubIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => {
+export const GithubIcon = ({ size = 24, width, height, ...props }) => {
   return (
     <svg
       height={size || height}
@@ -87,12 +65,7 @@ export const GithubIcon = ({
   );
 };
 
-export const MoonFilledIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => (
+export const MoonFilledIcon = ({ size = 24, width, height, ...props }) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -109,12 +82,7 @@ export const MoonFilledIcon = ({
   </svg>
 );
 
-export const SunFilledIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => (
+export const SunFilledIcon = ({ size = 24, width, height, ...props }) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -131,12 +99,7 @@ export const SunFilledIcon = ({
   </svg>
 );
 
-export const HeartFilledIcon = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => (
+export const HeartFilledIcon = ({ size = 24, width, height, ...props }) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -182,4 +145,4 @@ export const SearchIcon = (props) => (
       strokeWidth="2"
     />
   </svg>
-); 
+);
