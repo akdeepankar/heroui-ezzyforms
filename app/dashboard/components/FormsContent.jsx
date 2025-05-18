@@ -640,7 +640,9 @@ const FormsContent = ({ activeFormTab: initialActiveFormTab = "all" }) => {
                       </div>
                       <div className="bg-blue-50 rounded-lg p-4 ml-4 border border-blue-100">
                         <div className="flex justify-between items-start mb-1">
-                          <p className="text-sm font-medium text-gray-900">New response on "Customer Feedback Form"</p>
+                          <p className="text-sm font-medium text-gray-900">
+                            New response on &quot;Customer Feedback Form&quot;
+                          </p>
                           <Badge color="primary" variant="flat" size="sm">New</Badge>
                         </div>
                         <div className="flex items-center justify-between">
@@ -655,7 +657,9 @@ const FormsContent = ({ activeFormTab: initialActiveFormTab = "all" }) => {
                         <Icon icon="solar:chart-bold" className="text-white" width={12} />
                       </div>
                       <div className="bg-green-50 rounded-lg p-4 ml-4 border border-green-100">
-                        <p className="text-sm font-medium text-gray-900 mb-1">Weekly analytics report is ready</p>
+                        <p className="text-sm font-medium text-gray-900 mb-1">
+                          Weekly analytics report is ready
+                        </p>
                         <div className="flex items-center justify-between">
                           <span className="text-xs text-green-600 font-medium flex items-center gap-1">
                             <Icon icon="solar:arrow-up-bold" width={12} />
@@ -671,7 +675,9 @@ const FormsContent = ({ activeFormTab: initialActiveFormTab = "all" }) => {
                         <Icon icon="solar:pen-bold" className="text-white" width={12} />
                       </div>
                       <div className="bg-purple-50 rounded-lg p-4 ml-4 border border-purple-100">
-                        <p className="text-sm font-medium text-gray-900 mb-1">You edited "Event Registration" form</p>
+                        <p className="text-sm font-medium text-gray-900 mb-1">
+                          You edited &quot;Event Registration&quot; form
+                        </p>
                         <div className="flex items-center justify-between">
                           <p className="text-xs text-gray-500">5 fields modified</p>
                           <p className="text-xs text-gray-500">Yesterday at 4:30 PM</p>
@@ -684,7 +690,9 @@ const FormsContent = ({ activeFormTab: initialActiveFormTab = "all" }) => {
                         <Icon icon="solar:add-square-bold" className="text-white" width={12} />
                       </div>
                       <div className="bg-amber-50 rounded-lg p-4 ml-4 border border-amber-100">
-                        <p className="text-sm font-medium text-gray-900 mb-1">New form "Product Survey" created</p>
+                        <p className="text-sm font-medium text-gray-900 mb-1">
+                          New form &quot;Product Survey&quot; created
+                        </p>
                         <div className="flex items-center justify-between">
                           <p className="text-xs text-gray-500">15 questions added</p>
                           <p className="text-xs text-gray-500">2 days ago</p>
