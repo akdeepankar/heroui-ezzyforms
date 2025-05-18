@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Card,
   Avatar,
@@ -36,9 +36,20 @@ export default function Dashboard() {
   const [showPricing, setShowPricing] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
+  const mainContentRef = useRef(null);
 
   const handleLogout = () => {
     router.push("/");
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    // Scroll main content to top after tab change
+    setTimeout(() => {
+      if (mainContentRef.current) {
+        mainContentRef.current.scrollTo({ top: 0, behavior: "auto" });
+      }
+    }, 0);
   };
 
   // Render appropriate content based on active tab
@@ -92,7 +103,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => setActiveTab("dashboard")}
+                onClick={() => handleTabChange("dashboard")}
               >
                 <Icon icon="solar:home-2-bold" width={20} />
                 <span>Dashboard</span>
@@ -105,7 +116,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => setActiveTab("forms")}
+                onClick={() => handleTabChange("forms")}
               >
                 <Icon icon="solar:document-bold" width={20} />
                 <span>Forms</span>
@@ -118,7 +129,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => setActiveTab("templates")}
+                onClick={() => handleTabChange("templates")}
               >
                 <Icon icon="solar:clipboard-heart-bold" width={20} />
                 <span>Templates</span>
@@ -131,7 +142,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => setActiveTab("analytics")}
+                onClick={() => handleTabChange("analytics")}
               >
                 <Icon icon="solar:chart-bold" width={20} />
                 <span>Analytics</span>
@@ -140,7 +151,7 @@ export default function Dashboard() {
             <li>
               <button
                 className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left text-indigo-600 hover:bg-indigo-50"
-                onClick={() => setActiveTab("ai-assistant")}
+                onClick={() => handleTabChange("ai-assistant")}
               >
                 <Icon icon="solar:chat-round-dots-bold" width={20} />
                 <span>AI Assistant</span>
@@ -192,7 +203,7 @@ export default function Dashboard() {
                 ? "bg-primary-50 text-primary-600 font-medium"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
-            onClick={() => setActiveTab("settings")}
+            onClick={() => handleTabChange("settings")}
           >
             <Icon icon="solar:settings-bold" width={20} />
             <span>Settings</span>
@@ -229,7 +240,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main content area */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8" ref={mainContentRef}>
         {activeTab === "dashboard" ? (
           <DashboardOverview
             setActiveTab={setActiveTab}
