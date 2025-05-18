@@ -46,6 +46,8 @@ export default defineConfig([globalIgnores([
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:@next/next/recommended",
+        "next",
+        "next/core-web-vitals",
     )),
 
     plugins: {
