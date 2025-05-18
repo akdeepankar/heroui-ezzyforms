@@ -145,98 +145,111 @@ export default function Home() {
 
       {/* Floating Screenshots with enhanced design */}
       <section className="relative -mt-16 mb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative animate-on-scroll">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full max-w-5xl h-[65vh] bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl"></div>
-            </div>
-            
-            <div className="relative flex items-center justify-center py-10">
-              <div className="grid grid-cols-3 gap-8 max-w-5xl">
-                <div className="col-span-2 transform hover:-rotate-1 transition-all duration-700 relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 transition-all duration-300"></div>
-                  <div className="bg-white p-2 rounded-xl shadow-2xl relative z-10 transition-all duration-300 group-hover:shadow-indigo-200">
-                    <div className="bg-gray-100 rounded-lg p-1.5">
-                      <div className="flex items-center gap-1.5 mb-3 px-2">
-                        <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                        <div className="text-xs text-gray-500 ml-2">EzzyForms Builder</div>
-                      </div>
-                      <img 
-                        src="https://placehold.co/800x500/f8fafc/4f46e5?text=Form+Builder" 
-                        alt="Form Builder" 
-                        className="rounded-md w-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-2xl opacity-20 z-0"></div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative animate-on-scroll">
+      
+      {/* Background Gradient Panel */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-full max-w-5xl h-[65vh] bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl"></div>
+      </div>
+
+      {/* Main Grid Content */}
+      <div className="relative flex items-center justify-center py-10">
+        <div className="grid grid-cols-3 gap-8 max-w-5xl">
+          
+          {/* Left: Form Builder */}
+          <div className="col-span-2 transform hover:-rotate-1 transition-all duration-700 relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 transition-all duration-300"></div>
+            <div className="bg-white p-2 rounded-xl shadow-2xl relative z-10 transition-all duration-300 group-hover:shadow-indigo-200">
+              <div className="bg-gray-100 rounded-lg p-1.5">
+                <div className="flex items-center gap-1.5 mb-3 px-2">
+                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  <div className="text-xs text-gray-500 ml-2">EzzyForms Builder</div>
                 </div>
-                
-                <div className="space-y-6">
-                  <div className="bg-white p-2 rounded-xl shadow-xl transform hover:rotate-1 hover:-translate-y-1 transition-all duration-500 hover:shadow-indigo-200 relative">
-                    <div className="bg-gray-100 rounded-lg p-1.5">
-                      <div className="flex items-center gap-1.5 mb-2 px-2">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-                        <div className="text-xs text-gray-500 ml-2">Analytics</div>
-                      </div>
-                      <img 
-                        src="https://placehold.co/400x300/f8fafc/4f46e5?text=Analytics" 
-                        alt="Analytics" 
-                        className="rounded-md"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white p-2 rounded-xl shadow-xl transform hover:-rotate-2 hover:translate-y-1 transition-all duration-500 hover:shadow-indigo-200 relative">
-                    <div className="bg-gray-100 rounded-lg p-1.5">
-                      <div className="flex items-center gap-1.5 mb-2 px-2">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-                        <div className="text-xs text-gray-500 ml-2">Templates</div>
-                      </div>
-                      <img 
-                        src="https://placehold.co/400x300/f8fafc/4f46e5?text=Template" 
-                        alt="Templates" 
-                        className="rounded-md"
-                      />
-                    </div>
-                    <div className="absolute -left-4 -bottom-4 w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-2xl opacity-20 z-0"></div>
-                  </div>
-                </div>
+                <img
+                  src="https://placehold.co/800x500/f8fafc/4f46e5?text=Form+Builder"
+                  alt="Form Builder"
+                  className="rounded-md w-full object-cover"
+                />
               </div>
             </div>
-            
-            {/* Floating Badges */}
-            <div className="absolute -right-8 top-1/3 transform rotate-12 bg-white/90 backdrop-blur-sm rounded-lg shadow-xl p-3 animate-float">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                  <Icon icon="solar:check-circle-bold" className="text-green-500" width={16} />
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500">Responses</div>
-                  <div className="font-bold text-gray-800">1,234</div>
-            </div>
+            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-2xl opacity-20 z-0"></div>
           </div>
-            </div>
+
+          {/* Right: Analytics and Templates */}
+          <div className="space-y-6">
             
-            <div className="absolute -left-6 bottom-1/4 transform -rotate-6 bg-white/90 backdrop-blur-sm rounded-lg shadow-xl p-3 animate-float animation-delay-1000">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
-                  <Icon icon="solar:star-bold" className="text-purple-500" width={16} />
+            {/* Analytics */}
+            <div className="bg-white p-2 rounded-xl shadow-xl transform hover:rotate-1 hover:-translate-y-1 transition-all duration-500 hover:shadow-indigo-200 relative">
+              <div className="bg-gray-100 rounded-lg p-1.5">
+                <div className="flex items-center gap-1.5 mb-2 px-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                  <div className="text-xs text-gray-500 ml-2">Analytics</div>
                 </div>
-                <div>
-                  <div className="text-xs text-gray-500">Rating</div>
-                  <div className="font-bold text-gray-800">4.9/5</div>
-                </div>
+                <img
+                  src="https://placehold.co/400x300/f8fafc/4f46e5?text=Analytics"
+                  alt="Analytics"
+                  className="rounded-md"
+                />
               </div>
             </div>
+
+            {/* Templates */}
+            <div className="bg-white p-2 rounded-xl shadow-xl transform hover:-rotate-2 hover:translate-y-1 transition-all duration-500 hover:shadow-indigo-200 relative">
+              <div className="bg-gray-100 rounded-lg p-1.5">
+                <div className="flex items-center gap-1.5 mb-2 px-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                  <div className="text-xs text-gray-500 ml-2">Templates</div>
+                </div>
+                <img
+                  src="https://placehold.co/400x300/f8fafc/4f46e5?text=Template"
+                  alt="Templates"
+                  className="rounded-md"
+                />
+              </div>
+              <div className="absolute -left-4 -bottom-4 w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-2xl opacity-20 z-0"></div>
+            </div>
+
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Floating Badge: Responses */}
+      <div className="absolute -right-8 top-1/3 transform rotate-12 bg-white/90 backdrop-blur-sm rounded-lg shadow-xl p-3 animate-float">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+            <Icon icon="solar:check-circle-bold" className="text-green-500" width={16} />
+          </div>
+          <div>
+            <div className="text-xs text-gray-500">Responses</div>
+            <div className="font-bold text-gray-800">1,234</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Badge: Rating */}
+      <div className="absolute -left-6 bottom-1/4 transform -rotate-6 bg-white/90 backdrop-blur-sm rounded-lg shadow-xl p-3 animate-float animation-delay-1000">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+            <Icon icon="solar:star-bold" className="text-purple-500" width={16} />
+          </div>
+          <div>
+            <div className="text-xs text-gray-500">Rating</div>
+            <div className="font-bold text-gray-800">4.9/5</div>
+          </div>
+        </div>
+      </div>
+
+    </div> {/* end of .relative.animate-on-scroll */}
+  </div> {/* end of .max-w-7xl */}
+</section>
+
 
       {/* Features Section */}
       <section id="features" className="py-28 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
