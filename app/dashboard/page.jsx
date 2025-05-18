@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   Avatar,
@@ -36,21 +36,18 @@ export default function Dashboard() {
   const [showPricing, setShowPricing] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
-  const mainContentRef = useRef(null);
 
   const handleLogout = () => {
     router.push("/");
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-    // Scroll main content to top after tab change
-    setTimeout(() => {
-      if (mainContentRef.current) {
-        mainContentRef.current.scrollTo({ top: 0, behavior: "auto" });
-      }
-    }, 0);
-  };
+  // Scroll to top on tab change
+  useEffect(() => {
+    // Scroll the main content area to top
+    // If you want to scroll the whole page:
+    window.scrollTo({ top: 0, behavior: "auto" });
+    // If you want to scroll a specific container, use a ref and scroll that element instead
+  }, [activeTab]);
 
   // Render appropriate content based on active tab
   const renderContent = () => {
@@ -103,7 +100,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => handleTabChange("dashboard")}
+                onClick={() => setActiveTab("dashboard")}
               >
                 <Icon icon="solar:home-2-bold" width={20} />
                 <span>Dashboard</span>
@@ -116,7 +113,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => handleTabChange("forms")}
+                onClick={() => setActiveTab("forms")}
               >
                 <Icon icon="solar:document-bold" width={20} />
                 <span>Forms</span>
@@ -129,7 +126,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => handleTabChange("templates")}
+                onClick={() => setActiveTab("templates")}
               >
                 <Icon icon="solar:clipboard-heart-bold" width={20} />
                 <span>Templates</span>
@@ -142,7 +139,7 @@ export default function Dashboard() {
                     ? "bg-primary-50 text-primary-600 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
-                onClick={() => handleTabChange("analytics")}
+                onClick={() => setActiveTab("analytics")}
               >
                 <Icon icon="solar:chart-bold" width={20} />
                 <span>Analytics</span>
@@ -151,7 +148,7 @@ export default function Dashboard() {
             <li>
               <button
                 className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left text-indigo-600 hover:bg-indigo-50"
-                onClick={() => handleTabChange("ai-assistant")}
+                onClick={() => setActiveTab("ai-assistant")}
               >
                 <Icon icon="solar:chat-round-dots-bold" width={20} />
                 <span>AI Assistant</span>
@@ -203,7 +200,7 @@ export default function Dashboard() {
                 ? "bg-primary-50 text-primary-600 font-medium"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
-            onClick={() => handleTabChange("settings")}
+            onClick={() => setActiveTab("settings")}
           >
             <Icon icon="solar:settings-bold" width={20} />
             <span>Settings</span>
@@ -240,7 +237,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main content area */}
-      <div className="flex-1 p-8" ref={mainContentRef}>
+      <div className="flex-1 p-8">
         {activeTab === "dashboard" ? (
           <DashboardOverview
             setActiveTab={setActiveTab}
