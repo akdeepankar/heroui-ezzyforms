@@ -1,6 +1,6 @@
 # EzzyForms – Next.js + HeroUI Form Builder
 
-EzzyForms is a modern, drag-and-drop form builder built with Next.js and [HeroUI](https://heroui.dev/). It allows users to create, preview, and publish beautiful, accessible forms with ease.
+EzzyForms is a modern, drag-and-drop form builder built with Next.js and [HeroUI](https://heroui.dev/). It allows users to create, preview, and publish beautiful, accessible forms with ease with Rich Analytics.
 
 ---
 
@@ -36,11 +36,45 @@ EzzyForms leverages HeroUI for a consistent, modern, and accessible user interfa
 - **Customization**: Theme selection allows users to personalize the form appearance.
 
 ### 🖼️ **Example UI Screenshots**
-> _Add screenshots or GIFs here to showcase the UI (e.g., form builder, element library, preview modal, theme selector, analytics dashboard)._  
-> Example:  
-> ![Form Builder Screenshot](docs/screenshots/form-builder.png)  
-> ![Theme Selector Screenshot](docs/screenshots/theme-selector.png)  
-> ![Analytics Dashboard Screenshot](docs/screenshots/analytics-dashboard.png)
+<!-- UI Screenshots in 2 Columns (500px wide) -->
+<table>
+  <tr>
+    <td><img src="screenshots/ui1.jpg" width="500"/></td>
+    <td><img src="screenshots/ui2.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui3.jpg" width="500"/></td>
+    <td><img src="screenshots/ui4.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui5.jpg" width="500"/></td>
+    <td><img src="screenshots/ui6.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui7.jpg" width="500"/></td>
+    <td><img src="screenshots/ui8.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui9.jpg" width="500"/></td>
+    <td><img src="screenshots/ui10.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui11.jpg" width="500"/></td>
+    <td><img src="screenshots/ui12.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui13.jpg" width="500"/></td>
+    <td><img src="screenshots/ui14.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui15.jpg" width="500"/></td>
+    <td><img src="screenshots/ui16.jpg" width="500"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ui17.jpg" width="500"/></td>
+    <td><img src="screenshots/ui18.jpg" width="500"/></td>
+  </tr>
+</table>
 
 ---
 
