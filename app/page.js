@@ -241,7 +241,7 @@ export default function Home() {
               Ready to transform your form experience?
             </h2>
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Join thousands of satisfied users who've transformed their form experience with EzzyForms.
+              Join thousands of satisfied users who&apos;ve transformed their form experience with EzzyForms.
             </p>
             <Button
               className="bg-white text-indigo-600 hover:bg-gray-100 px-8 h-14 text-lg font-medium group"

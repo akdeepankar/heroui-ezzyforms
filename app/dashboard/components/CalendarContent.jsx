@@ -268,10 +268,9 @@ const CalendarContent = () => {
                         {dayEvents.length > 0 && (
                           <div className="mt-1 space-y-1">
                             {dayEvents.slice(0, 2).map(event => (
-                              <div
+                              <button
                                 key={event.id}
-                                role="button"
-                                tabIndex={0}
+                                type="button"
                                 aria-label={`${event.title} at ${event.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}
                                 onKeyDown={(e) => {
                                   if (e.key === 'Enter' || e.key === ' ') {
@@ -280,14 +279,14 @@ const CalendarContent = () => {
                                     handleEventClick(event);
                                   }
                                 }}
-                                className={`text-xs px-1 py-0.5 rounded truncate bg-${event.color}-100 text-${event.color}-700 cursor-pointer hover:bg-${event.color}-200 transition-colors focus:outline-none focus:ring-2 focus:ring-${event.color}-500 focus:ring-offset-1`}
+                                className={`w-full text-left text-xs px-1 py-0.5 rounded truncate bg-${event.color}-100 text-${event.color}-700 cursor-pointer hover:bg-${event.color}-200 transition-colors focus:outline-none focus:ring-2 focus:ring-${event.color}-500 focus:ring-offset-1`}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleEventClick(event);
                                 }}
                               >
                                 {event.title}
-                              </div>
+                              </button>
                             ))}
                             {dayEvents.length > 2 && (
                               <div className="text-xs text-gray-500">
