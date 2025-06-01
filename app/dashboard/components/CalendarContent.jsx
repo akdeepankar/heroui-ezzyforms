@@ -238,65 +238,59 @@ const CalendarContent = () => {
                 {calendarDays.map((day, index) => {
                   const dayEvents = day ? getEventsForDate(day) : [];
                   return (
-                    <div
-                      key={index}
-                      role="button"
-                      tabIndex={day ? 0 : -1}
-                      aria-label={day ? `${currentMonth} ${day}, ${currentYear}` : ""}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          day && setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
-                        }
-                      }}
-                      className={`aspect-square p-2 ${
-                        day
-                          ? "hover:bg-gray-50 cursor-pointer rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                          : ""
-                      } ${
-                        selectedDate &&
-                        day === selectedDate.getDate() &&
-                        currentDate.getMonth() === selectedDate.getMonth() &&
-                        currentDate.getFullYear() === selectedDate.getFullYear()
-                          ? "bg-indigo-50 text-indigo-600 font-medium"
-                          : "text-gray-700"
-                      }`}
-                      onClick={() => day && setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day))}
-                    >
-                      <div className="flex flex-col h-full">
-                        <span className="text-sm">{day}</span>
-                        {dayEvents.length > 0 && (
-                          <div className="mt-1 space-y-1">
-                            {dayEvents.slice(0, 2).map(event => (
-                              <button
-                                key={event.id}
-                                type="button"
-                                aria-label={`${event.title} at ${event.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}
-                                onKeyDown={(e) => {
-                                  if (e.key === 'Enter' || e.key === ' ') {
-                                    e.preventDefault();
+                    day ? (
+                      <button
+                        key={index}
+                        type="button"
+                        aria-label={`${currentMonth} ${day}, ${currentYear}`}
+                        className={`aspect-square p-2 text-left hover:bg-gray-50 cursor-pointer rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
+                          selectedDate &&
+                          day === selectedDate.getDate() &&
+                          currentDate.getMonth() === selectedDate.getMonth() &&
+                          currentDate.getFullYear() === selectedDate.getFullYear()
+                            ? "bg-indigo-50 text-indigo-600 font-medium"
+                            : "text-gray-700"
+                        }`}
+                        onClick={() => setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day))}
+                      >
+                        <div className="flex flex-col h-full">
+                          <span className="text-sm">{day}</span>
+                          {dayEvents.length > 0 && (
+                            <div className="mt-1 space-y-1">
+                              {dayEvents.slice(0, 2).map(event => (
+                                <div
+                                  key={event.id}
+                                  role="button"
+                                  tabIndex={0}
+                                  aria-label={`${event.title} at ${event.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}
+                                  onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      handleEventClick(event);
+                                    }
+                                  }}
+                                  className={`w-full text-left text-xs px-1 py-0.5 rounded truncate bg-${event.color}-100 text-${event.color}-700 cursor-pointer hover:bg-${event.color}-200 transition-colors focus:outline-none focus:ring-2 focus:ring-${event.color}-500 focus:ring-offset-1`}
+                                  onClick={(e) => {
                                     e.stopPropagation();
                                     handleEventClick(event);
-                                  }
-                                }}
-                                className={`w-full text-left text-xs px-1 py-0.5 rounded truncate bg-${event.color}-100 text-${event.color}-700 cursor-pointer hover:bg-${event.color}-200 transition-colors focus:outline-none focus:ring-2 focus:ring-${event.color}-500 focus:ring-offset-1`}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleEventClick(event);
-                                }}
-                              >
-                                {event.title}
-                              </button>
-                            ))}
-                            {dayEvents.length > 2 && (
-                              <div className="text-xs text-gray-500">
-                                +{dayEvents.length - 2} more
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                                  }}
+                                >
+                                  {event.title}
+                                </div>
+                              ))}
+                              {dayEvents.length > 2 && (
+                                <div className="text-xs text-gray-500">
+                                  +{dayEvents.length - 2} more
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </button>
+                    ) : (
+                      <div key={index} className="aspect-square p-2" />
+                    )
                   );
                 })}
               </div>
