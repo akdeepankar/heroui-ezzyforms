@@ -273,9 +273,27 @@ export default function Home() {
               <span className="font-bold text-xl">EzzyForms</span>
             </div>
             <div className="flex gap-8">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a>
+              <Button
+                variant="light"
+                className="text-gray-400 hover:text-white transition-colors"
+                onPress={() => {}}
+              >
+                Privacy
+              </Button>
+              <Button
+                variant="light"
+                className="text-gray-400 hover:text-white transition-colors"
+                onPress={() => {}}
+              >
+                Terms
+              </Button>
+              <Button
+                variant="light"
+                className="text-gray-400 hover:text-white transition-colors"
+                onPress={() => {}}
+              >
+                Contact
+              </Button>
             </div>
           </div>
         </div>

@@ -240,9 +240,18 @@ const CalendarContent = () => {
                   return (
                     <div
                       key={index}
+                      role="button"
+                      tabIndex={day ? 0 : -1}
+                      aria-label={day ? `${currentMonth} ${day}, ${currentYear}` : ""}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          day && setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
+                        }
+                      }}
                       className={`aspect-square p-2 ${
                         day
-                          ? "hover:bg-gray-50 cursor-pointer rounded-lg"
+                          ? "hover:bg-gray-50 cursor-pointer rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           : ""
                       } ${
                         selectedDate &&
@@ -261,7 +270,17 @@ const CalendarContent = () => {
                             {dayEvents.slice(0, 2).map(event => (
                               <div
                                 key={event.id}
-                                className={`text-xs px-1 py-0.5 rounded truncate bg-${event.color}-100 text-${event.color}-700 cursor-pointer hover:bg-${event.color}-200 transition-colors`}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${event.title} at ${event.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleEventClick(event);
+                                  }
+                                }}
+                                className={`text-xs px-1 py-0.5 rounded truncate bg-${event.color}-100 text-${event.color}-700 cursor-pointer hover:bg-${event.color}-200 transition-colors focus:outline-none focus:ring-2 focus:ring-${event.color}-500 focus:ring-offset-1`}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleEventClick(event);
