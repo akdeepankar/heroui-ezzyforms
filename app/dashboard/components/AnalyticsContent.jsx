@@ -439,63 +439,82 @@ export default function AnalyticsContent() {
 
   return (
     <div className="space-y-8">
-      {/* Minimal Banner/Header */}
-      <div className="mb-6 bg-gradient-to-r from-indigo-50 via-blue-50 to-cyan-50 rounded-xl p-6 md:p-8 relative overflow-hidden border border-gray-100">
+      {/* Enhanced Banner with Stats */}
+      <div className="mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl p-6 md:p-8 relative overflow-hidden border border-white/20 text-white">
+        <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
         <div className="flex flex-col md:flex-row md:items-center md:justify-between relative z-10">
-          <div className="mb-4 md:mb-0 flex items-center gap-3">
-            <Icon
-              className="text-indigo-400"
-              icon="solar:graph-new-bold-duotone"
-              width={28}
-            />
-            <h2 className="text-xl font-semibold text-gray-900">
-              Form Analytics
-            </h2>
+          <div className="mb-4 md:mb-0">
+            <div className="flex items-center gap-3 mb-2">
+              <Icon
+                className="text-white/90"
+                icon="solar:graph-new-bold-duotone"
+                width={28}
+              />
+              <h2 className="text-xl font-semibold">
+                Form Analytics Dashboard
+              </h2>
+            </div>
+            <p className="text-sm text-white/80">Track and analyze your form performance in real-time</p>
           </div>
-          <Button
-            className="bg-white text-indigo-600 font-medium border border-gray-100"
-            startContent={<Icon icon="solar:export-bold" width={18} />}
-            variant="flat"
-          >
-            Export
-          </Button>
+          <div className="flex items-center gap-4">
+            <div className="text-center p-2 rounded-xl bg-white/10 backdrop-blur-sm ring-1 ring-white/20">
+              <div className="text-lg font-bold">98%</div>
+              <div className="text-xs opacity-80">Accuracy</div>
+            </div>
+            <div className="text-center p-2 rounded-xl bg-white/10 backdrop-blur-sm ring-1 ring-white/20">
+              <div className="text-lg font-bold">24/7</div>
+              <div className="text-xs opacity-80">Monitoring</div>
+            </div>
+            <div className="text-center p-2 rounded-xl bg-white/10 backdrop-blur-sm ring-1 ring-white/20">
+              <div className="text-lg font-bold">1.2s</div>
+              <div className="text-xs opacity-80">Update Time</div>
+            </div>
+            <Button
+              className="bg-white text-indigo-600 font-medium border border-white/20"
+              startContent={<Icon icon="solar:export-bold" width={18} />}
+              variant="flat"
+            >
+              Export Report
+            </Button>
+          </div>
         </div>
       </div>
-      {/* KPIs Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
-        {kpis.map((item, idx) => (
-          <HeroTooltip
-            key={idx}
-            content={
-              item.name === "Completion Rate"
-                ? "Percentage of users who completed the form."
-                : item.name === "Avg. Time (min)"
-                  ? "Average time taken to complete the form."
-                  : "Percentage of users who started but did not finish the form."
-            }
-            placement="top"
-          >
-            <Card className="bg-white border border-gray-100 rounded-xl flex flex-col items-center justify-center p-6 cursor-help">
-              <div
-                className={`w-10 h-10 rounded-lg flex items-center justify-center mb-2 bg-gradient-to-br ${item.color} text-white`}
-              >
-                <Icon icon={item.icon} width={22} />
-              </div>
-              <div className="text-xs text-gray-500 mb-1">{item.name}</div>
-              <div className="text-2xl font-bold text-gray-900">
-                {formatKPI(item.value, item.unit)}
-              </div>
-            </Card>
-          </HeroTooltip>
+
+      {/* Quick Stats Row */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[
+          { label: "Total Submissions", value: "12,458", change: "+12.5%", trend: "up", color: "green" },
+          { label: "Active Forms", value: "24", change: "+2", trend: "up", color: "blue" },
+          { label: "Avg. Response Time", value: "2.4 min", change: "-0.3 min", trend: "down", color: "green" },
+          { label: "Conversion Rate", value: "68.5%", change: "+5.2%", trend: "up", color: "green" }
+        ].map((stat, idx) => (
+          <Card key={idx} className="bg-white border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm text-gray-500">{stat.label}</span>
+              <span className={`text-xs font-medium ${stat.trend === 'up' ? 'text-green-500' : 'text-red-500'}`}>
+                {stat.change}
+              </span>
+            </div>
+            <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+            <div className="mt-2 flex items-center gap-1">
+              <Icon 
+                icon={stat.trend === 'up' ? 'solar:arrow-up-bold' : 'solar:arrow-down-bold'} 
+                className={stat.trend === 'up' ? 'text-green-500' : 'text-red-500'} 
+                width={14} 
+              />
+              <span className="text-xs text-gray-500">vs last period</span>
+            </div>
+          </Card>
         ))}
       </div>
-      {/* Filter Bar */}
-      <div className="flex flex-wrap gap-4 items-center justify-between bg-white border border-gray-100 rounded-xl px-4 py-3">
-        <div className="flex gap-2 items-center">
+
+      {/* Enhanced Filter Bar */}
+      <div className="flex flex-wrap gap-4 items-center justify-between bg-white border border-gray-100 rounded-xl px-6 py-4">
+        <div className="flex gap-3 items-center">
           <Dropdown>
             <DropdownTrigger>
               <Button
-                className="min-w-[120px] bg-gray-50 text-gray-700 border border-gray-100"
+                className="min-w-[140px] bg-gray-50 text-gray-700 border border-gray-100"
                 variant="flat"
               >
                 {dateRanges.find((r) => r.value === selectedRange)?.label}
@@ -511,7 +530,6 @@ export default function AnalyticsContent() {
               selectedKeys={[selectedRange]}
               onSelectionChange={(keys) => {
                 const selectedKey = Array.from(keys)[0];
-
                 if (selectedKey) setSelectedRange(selectedKey.toString());
               }}
             >
@@ -523,7 +541,7 @@ export default function AnalyticsContent() {
           <Dropdown>
             <DropdownTrigger>
               <Button
-                className="min-w-[120px] bg-gray-50 text-gray-700 border border-gray-100"
+                className="min-w-[140px] bg-gray-50 text-gray-700 border border-gray-100"
                 variant="flat"
               >
                 {selectedForm}
@@ -539,7 +557,6 @@ export default function AnalyticsContent() {
               selectedKeys={[selectedForm]}
               onSelectionChange={(keys) => {
                 const selectedKey = Array.from(keys)[0];
-
                 if (selectedKey) setSelectedForm(selectedKey.toString());
               }}
             >
@@ -548,12 +565,27 @@ export default function AnalyticsContent() {
               ))}
             </DropdownMenu>
           </Dropdown>
+          <Button
+            className="bg-indigo-50 text-indigo-600 border border-indigo-100"
+            startContent={<Icon icon="solar:filter-bold" width={16} />}
+            variant="flat"
+          >
+            More Filters
+          </Button>
         </div>
-        <span className="text-xs text-gray-400">
-          * All data is mock for demo
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-400">Last updated: 2 minutes ago</span>
+          <Button
+            isIconOnly
+            variant="light"
+            className="text-gray-400"
+          >
+            <Icon icon="solar:refresh-circle-bold" width={18} />
+          </Button>
+        </div>
       </div>
-      {/* Two-column grid for main charts */}
+
+      {/* Main Content Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Pie (Doughnut) Chart: Submission Sources */}
         <HeroTooltip
@@ -910,31 +942,300 @@ export default function AnalyticsContent() {
           </Card>
         </HeroTooltip>
       </div>
-      {/* Minimal Map Section */}
-      <Card className="bg-white border border-gray-100 rounded-xl p-0">
-        <CardHeader className="flex items-center gap-2 px-5 pt-5 pb-2 bg-transparent">
-          <Icon
-            className="text-blue-400"
-            icon="solar:map-bold-duotone"
-            width={18}
-          />
-          <span className="font-medium text-gray-700 text-sm">
-            Geographic Distribution
-          </span>
-          <HeroTooltip
-            content="Hover a marker to see city and submissions."
-            placement="top"
-          >
+
+      {/* New Charts Section (replacing Insights and Activity) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* User Engagement Chart */}
+        <Card className="bg-white border border-gray-100 rounded-xl p-0">
+          <CardHeader className="flex items-center gap-2 px-6 pt-6 pb-2 bg-transparent">
             <Icon
-              className="ml-2 text-gray-400"
-              icon="solar:info-circle-bold"
-              width={16}
+              className="text-emerald-400"
+              icon="solar:users-group-rounded-bold"
+              width={18}
             />
-          </HeroTooltip>
+            <span className="font-medium text-gray-700 text-sm">
+              User Engagement
+            </span>
+          </CardHeader>
+          <CardBody className="p-6 pt-2">
+            <ResponsiveContainer height={300} width="100%">
+              <AreaChart
+                data={[
+                  { time: "9AM", value: 30 },
+                  { time: "10AM", value: 45 },
+                  { time: "11AM", value: 60 },
+                  { time: "12PM", value: 75 },
+                  { time: "1PM", value: 65 },
+                  { time: "2PM", value: 85 },
+                  { time: "3PM", value: 90 },
+                  { time: "4PM", value: 70 },
+                  { time: "5PM", value: 50 }
+                ]}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient id="colorEngagement" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <XAxis 
+                  dataKey="time" 
+                  axisLine={false}
+                  tickLine={false}
+                  style={{ fontSize: "12px", color: "#64748b" }}
+                />
+                <YAxis 
+                  axisLine={false}
+                  tickLine={false}
+                  style={{ fontSize: "12px", color: "#64748b" }}
+                />
+                <RechartsTooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderColor: "#f3f4f6",
+                    borderRadius: "8px",
+                  }}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#10b981"
+                  fillOpacity={1}
+                  fill="url(#colorEngagement)"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </CardBody>
+        </Card>
+
+        {/* Form Performance Metrics */}
+        <Card className="bg-white border border-gray-100 rounded-xl p-0">
+          <CardHeader className="flex items-center gap-2 px-6 pt-6 pb-2 bg-transparent">
+            <Icon
+              className="text-violet-400"
+              icon="solar:chart-2-bold"
+              width={18}
+            />
+            <span className="font-medium text-gray-700 text-sm">
+              Form Performance Metrics
+            </span>
+          </CardHeader>
+          <CardBody className="p-6 pt-2">
+            <ResponsiveContainer height={300} width="100%">
+              <BarChart
+                data={[
+                  { name: "Completion", value: 85 },
+                  { name: "Response", value: 92 },
+                  { name: "Accuracy", value: 88 },
+                  { name: "Satisfaction", value: 90 }
+                ]}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
+                <XAxis 
+                  dataKey="name" 
+                  axisLine={false}
+                  tickLine={false}
+                  style={{ fontSize: "12px", color: "#64748b" }}
+                />
+                <YAxis 
+                  axisLine={false}
+                  tickLine={false}
+                  style={{ fontSize: "12px", color: "#64748b" }}
+                  tickFormatter={(value) => `${value}%`}
+                />
+                <RechartsTooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderColor: "#f3f4f6",
+                    borderRadius: "8px",
+                  }}
+                  formatter={(value) => [`${value}%`, "Score"]}
+                />
+                <Bar
+                  dataKey="value"
+                  fill="#8b5cf6"
+                  radius={[4, 4, 0, 0]}
+                  barSize={40}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardBody>
+        </Card>
+
+        {/* Response Time Distribution */}
+        <Card className="bg-white border border-gray-100 rounded-xl p-0">
+          <CardHeader className="flex items-center gap-2 px-6 pt-6 pb-2 bg-transparent">
+            <Icon
+              className="text-rose-400"
+              icon="solar:clock-circle-bold"
+              width={18}
+            />
+            <span className="font-medium text-gray-700 text-sm">
+              Response Time Distribution
+            </span>
+          </CardHeader>
+          <CardBody className="p-6 pt-2">
+            <ResponsiveContainer height={300} width="100%">
+              <LineChart
+                data={[
+                  { time: "Mon", value: 2.1 },
+                  { time: "Tue", value: 1.8 },
+                  { time: "Wed", value: 2.3 },
+                  { time: "Thu", value: 1.9 },
+                  { time: "Fri", value: 2.0 },
+                  { time: "Sat", value: 2.2 },
+                  { time: "Sun", value: 2.4 }
+                ]}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
+                <XAxis 
+                  dataKey="time" 
+                  axisLine={false}
+                  tickLine={false}
+                  style={{ fontSize: "12px", color: "#64748b" }}
+                />
+                <YAxis 
+                  axisLine={false}
+                  tickLine={false}
+                  style={{ fontSize: "12px", color: "#64748b" }}
+                  tickFormatter={(value) => `${value}m`}
+                />
+                <RechartsTooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderColor: "#f3f4f6",
+                    borderRadius: "8px",
+                  }}
+                  formatter={(value) => [`${value} min`, "Time"]}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#f43f5e"
+                  strokeWidth={2}
+                  dot={{ fill: "#f43f5e", strokeWidth: 2 }}
+                  activeDot={{ r: 6, fill: "#f43f5e" }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardBody>
+        </Card>
+
+        {/* Form Types Distribution */}
+        <Card className="bg-white border border-gray-100 rounded-xl p-0">
+          <CardHeader className="flex items-center gap-2 px-6 pt-6 pb-2 bg-transparent">
+            <Icon
+              className="text-amber-400"
+              icon="solar:pie-chart-2-bold"
+              width={18}
+            />
+            <span className="font-medium text-gray-700 text-sm">
+              Form Types Distribution
+            </span>
+          </CardHeader>
+          <CardBody className="p-6 pt-2">
+            <ResponsiveContainer height={300} width="100%">
+              <PieChart>
+                <Pie
+                  data={[
+                    { name: "Feedback", value: 35 },
+                    { name: "Survey", value: 25 },
+                    { name: "Registration", value: 20 },
+                    { name: "Application", value: 15 },
+                    { name: "Other", value: 5 }
+                  ]}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  paddingAngle={5}
+                  dataKey="value"
+                >
+                  {[
+                    "#f59e0b",
+                    "#8b5cf6",
+                    "#ec4899",
+                    "#3b82f6",
+                    "#10b981"
+                  ].map((color, index) => (
+                    <Cell key={`cell-${index}`} fill={color} />
+                  ))}
+                </Pie>
+                <RechartsTooltip
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    borderColor: "#f3f4f6",
+                    borderRadius: "8px",
+                  }}
+                  formatter={(value) => [`${value}%`, "Share"]}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="flex flex-wrap gap-4 justify-center mt-4">
+              {[
+                { name: "Feedback", color: "#f59e0b" },
+                { name: "Survey", color: "#8b5cf6" },
+                { name: "Registration", color: "#ec4899" },
+                { name: "Application", color: "#3b82f6" },
+                { name: "Other", color: "#10b981" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full" style={{ background: item.color }} />
+                  <span className="text-sm text-gray-600">{item.name}</span>
+                </div>
+              ))}
+            </div>
+          </CardBody>
+        </Card>
+      </div>
+
+      {/* Enhanced Map Section */}
+      <Card className="bg-white border border-gray-100 rounded-xl p-0">
+        <CardHeader className="flex items-center justify-between px-6 pt-6 pb-2 bg-transparent">
+          <div className="flex items-center gap-2">
+            <Icon
+              className="text-blue-400"
+              icon="solar:map-bold-duotone"
+              width={18}
+            />
+            <span className="font-medium text-gray-700 text-sm">
+              Geographic Distribution
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="flat"
+              className="text-gray-600"
+              startContent={<Icon icon="solar:download-bold" width={16} />}
+            >
+              Export Data
+            </Button>
+            <Button
+              size="sm"
+              variant="flat"
+              className="text-gray-600"
+              startContent={<Icon icon="solar:settings-bold" width={16} />}
+            >
+              Settings
+            </Button>
+          </div>
         </CardHeader>
-        <CardBody className="p-5 pt-2">
-          <div className="w-full h-72 rounded-lg overflow-hidden">
+        <CardBody className="p-6 pt-2">
+          <div className="w-full h-96 rounded-lg overflow-hidden border border-gray-100">
             <MapComponent />
+          </div>
+          <div className="mt-4 flex flex-wrap gap-4">
+            {topCities.slice(0, 5).map((city, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full" style={{ background: city.color }} />
+                <span className="text-sm text-gray-600">{city.name}</span>
+                <span className="text-sm font-medium text-gray-900">{city.value}</span>
+              </div>
+            ))}
           </div>
         </CardBody>
       </Card>

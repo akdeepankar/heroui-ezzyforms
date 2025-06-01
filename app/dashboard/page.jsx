@@ -24,6 +24,7 @@ import AnalyticsContent from "./components/AnalyticsContent";
 import SettingsContent from "./components/SettingsContent";
 import DashboardOverview from "./components/DashboardOverview";
 import AIAssistantContent from "./components/AIAssistantContent";
+import CalendarContent from "./components/CalendarContent";
 
 const eduQLD = Edu_QLD_Beginner({
   subsets: ["latin"],
@@ -62,6 +63,8 @@ export default function Dashboard() {
         return <SettingsContent />;
       case "ai-assistant":
         return <AIAssistantContent />;
+      case "calendar":
+        return <CalendarContent />;
       default:
         return (
           <DashboardOverview
@@ -152,6 +155,19 @@ export default function Dashboard() {
               >
                 <Icon icon="solar:chat-round-dots-bold" width={20} />
                 <span>AI Assistant</span>
+              </button>
+            </li>
+            <li>
+              <button
+                className={`flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-left ${
+                  activeTab === "calendar"
+                    ? "bg-primary-50 text-primary-600 font-medium"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
+                onClick={() => setActiveTab("calendar")}
+              >
+                <Icon icon="solar:calendar-mark-bold" width={20} />
+                <span>Calendar</span>
               </button>
             </li>
           </ul>
