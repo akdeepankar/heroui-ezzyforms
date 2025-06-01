@@ -302,9 +302,10 @@ const CalendarContent = () => {
                 {events
                   .sort((a, b) => a.date - b.date)
                   .map(event => (
-                    <div 
+                    <button 
                       key={event.id} 
-                      className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+                      type="button"
+                      className="w-full flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors text-left"
                       onClick={() => handleEventClick(event)}
                     >
                       <div className={`w-12 h-12 bg-${event.color}-100 rounded-lg flex items-center justify-center`}>
@@ -320,7 +321,7 @@ const CalendarContent = () => {
                           <p className="text-sm text-gray-600 mt-1">{event.description}</p>
                         )}
                       </div>
-                    </div>
+                    </button>
                   ))}
               </div>
             </CardBody>
